@@ -617,16 +617,16 @@ const AboutPage = () => {
       {/* Image Grid - 2x2 Layout Full Width */}
       <section>
         <div className="grid grid-cols-2 gap-0">
-          <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
             <img src={image16} alt="Interior 1" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
             <img src={image15} alt="Interior 2" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
             <img src={image7} alt="Interior 3" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
             <img src={image8} alt="Interior 4" className="w-full h-full object-cover" />
           </div>
         </div>

@@ -654,13 +654,20 @@ const AboutPage = () => {
       </section>
 
       {/* CTAs - S&P Style */}
-      <section className="py-section bg-white">
+      <section className="py-section" style={{ backgroundColor: '#ECEAE6' }}>
         <div className="container text-center">
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link to="/contact" className="btn btn-primary">
               SCHEDULE A CONSULTATION
             </Link>
-            <Link to="/properties" className="btn btn-secondary">
+            <Link
+              to="/properties"
+              className="btn btn-secondary"
+              style={{
+                borderColor: 'var(--color-text)',
+                color: 'var(--color-text)'
+              }}
+            >
               VIEW AVAILABLE RESIDENCES
             </Link>
           </div>

@@ -283,7 +283,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Unit 1 */}
             <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
-              <div style={{ aspectRatio: '3/2', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ aspectRatio: '2/1', overflow: 'hidden', position: 'relative' }}>
                 <img
                   src={unit1Image}
                   alt="Two-Bedroom Executive Suite"
@@ -352,7 +352,7 @@ const HomePage = () => {
 
             {/* Unit 2 */}
             <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
-              <div style={{ aspectRatio: '3/2', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ aspectRatio: '2/1', overflow: 'hidden', position: 'relative' }}>
                 <img
                   src={unit2Image}
                   alt="Two-Bedroom Executive Suite"
@@ -422,7 +422,7 @@ const HomePage = () => {
 
         {/* Unit 3 - Full Width */}
         <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
-            <div style={{ aspectRatio: '3/1', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ aspectRatio: '4/1', overflow: 'hidden', position: 'relative' }}>
               <img
                 src={unit3Image}
                 alt="One-Bedroom Executive Residence"

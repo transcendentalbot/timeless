@@ -39,12 +39,43 @@ const ContactPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production, this would send to Formspree or backend
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+
+    try {
+      // Send to Formspree - replace with your Formspree endpoint
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          companyLocation: '',
+          moveInDate: '',
+          unitPreference: '',
+          lengthOfStay: '',
+          occupants: '',
+          pets: 'no',
+          inquiryType: 'individual',
+          message: '',
+        });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        alert('There was an error submitting your inquiry. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('There was an error submitting your inquiry. Please try again or contact us directly.');
+    }
   };
 
   return (
@@ -99,9 +130,10 @@ const ContactPage = () => {
       </section>
 
       {/* Inquiry Form Section */}
-      <section style={{
+      <section id="inquiry-form" style={{
         padding: '80px 0',
-        backgroundColor: '#F5F5F5'
+        backgroundColor: '#F5F5F5',
+        scrollMarginTop: '100px'
       }}>
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -840,7 +872,7 @@ const ContactPage = () => {
 
               <div style={{ marginBottom: '60px' }}>
                 <a
-                  href="mailto:timelessbrookfields@gmail.com"
+                  href="mailto:sales@timelessbrookfields.com"
                   style={{
                     fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                     fontSize: '0.75em',
@@ -854,7 +886,7 @@ const ContactPage = () => {
                   onMouseEnter={(e) => e.target.style.color = '#666666'}
                   onMouseLeave={(e) => e.target.style.color = 'var(--color-text)'}
                 >
-                  timelessbrookfields@gmail.com
+                  sales@timelessbrookfields.com
                 </a>
               </div>
 

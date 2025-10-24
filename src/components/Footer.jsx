@@ -45,7 +45,7 @@ const Footer = () => {
             SCHEDULE A TOUR
           </p>
           <Link
-            to="/contact"
+            to="/contact#inquiry-form"
             className="view-button"
             style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
@@ -120,7 +120,7 @@ const Footer = () => {
               (747) 224-7827
             </a>
             <span style={{ color: '#666666' }}>|</span>
-            <a href="mailto:timelessbrookfields@gmail.com" style={{
+            <a href="mailto:sales@timelessbrookfields.com" style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontSize: '13px',
               fontWeight: 400,
@@ -131,7 +131,7 @@ const Footer = () => {
             }}
             onMouseEnter={(e) => e.target.style.color = '#FFFFFF'}
             onMouseLeave={(e) => e.target.style.color = '#CCCCCC'}>
-              TIMELESSBROOKFIELDS@GMAIL.COM
+              SALES@TIMELESSBROOKFIELDS.COM
             </a>
           </div>
         </div>
@@ -172,7 +172,7 @@ const Footer = () => {
             }}
             onMouseEnter={(e) => e.target.style.color = '#FFFFFF'}
             onMouseLeave={(e) => e.target.style.color = '#999999'}>
-              LOCATION
+              NEIGHBORHOOD
             </Link>
             <Link to="/about" style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',

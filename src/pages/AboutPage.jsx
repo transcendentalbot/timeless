@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import heroImage from '../assets/images/1.jpeg';
 import entrywayImage from '../assets/images/3.jpeg';
@@ -14,6 +14,16 @@ import image16 from '../assets/images/16.png';
 
 const AboutPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const carouselImages = [
     { src: unit2Image, alt: 'Executive Suite 1' },
@@ -37,16 +47,27 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       {/* Hero Section with Background Image - S&P Style */}
-      <section className="relative" style={{ height: '70vh', minHeight: '500px' }}>
+      <section className="relative" style={{ height: '60vh', minHeight: '525px', maxHeight: '725px', overflow: 'hidden' }}>
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Timeless Brookfields"
             className="w-full h-full object-cover"
-            style={{ filter: 'brightness(0.6)' }}
+            style={{
+              filter: 'brightness(0.6)',
+              objectPosition: 'center',
+              transform: `translateY(${scrollY * 0.5}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
           />
         </div>
-        <div className="relative z-10 h-full flex items-center justify-center text-center">
+        <div
+          className="relative z-10 h-full flex items-center justify-center text-center"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
           <div className="container">
             <h1 style={{
               fontSize: '40px',
@@ -492,7 +513,7 @@ const AboutPage = () => {
       <section style={{ backgroundColor: '#2d2d2d' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left - Text */}
-          <div className="flex items-center justify-center p-12 lg:p-16">
+          <div className="flex items-center justify-center p-16 lg:p-24">
             <div style={{ maxWidth: '500px' }}>
               <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>05</div>
               <h2 style={{
@@ -524,17 +545,17 @@ const AboutPage = () => {
             </div>
           </div>
           {/* Right - 2x2 Image Grid */}
-          <div className="grid grid-cols-2 gap-0">
-            <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
+          <div className="grid grid-cols-2 grid-rows-2 gap-0" style={{ minHeight: '500px' }}>
+            <div style={{ overflow: 'hidden' }}>
               <img src={image4} alt="Lifestyle 1" className="w-full h-full object-cover" />
             </div>
-            <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
+            <div style={{ overflow: 'hidden' }}>
               <img src={image5} alt="Lifestyle 2" className="w-full h-full object-cover" />
             </div>
-            <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
+            <div style={{ overflow: 'hidden' }}>
               <img src={image7} alt="Lifestyle 3" className="w-full h-full object-cover" />
             </div>
-            <div style={{ aspectRatio: '1/1', overflow: 'hidden' }}>
+            <div style={{ overflow: 'hidden' }}>
               <img src={image8} alt="Lifestyle 4" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -617,16 +638,16 @@ const AboutPage = () => {
       {/* Image Grid - 2x2 Layout Full Width */}
       <section>
         <div className="grid grid-cols-2 gap-0">
-          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
             <img src={image16} alt="Interior 1" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
             <img src={image15} alt="Interior 2" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
             <img src={image7} alt="Interior 3" className="w-full h-full object-cover" />
           </div>
-          <div style={{ aspectRatio: '2/1', overflow: 'hidden' }}>
+          <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
             <img src={image8} alt="Interior 4" className="w-full h-full object-cover" />
           </div>
         </div>

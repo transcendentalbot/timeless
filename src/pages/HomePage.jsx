@@ -1,254 +1,566 @@
 import { Link } from 'react-router-dom';
-import {
-  BuildingLibraryIcon,
-  MapIcon,
-  MapPinIcon,
-  SparklesIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline';
-
-// Import images
+import { useState, useEffect } from 'react';
 import heroImage from '../assets/images/1.jpeg';
 import entrywayImage from '../assets/images/3.jpeg';
 import unit1Image from '../assets/images/9.jpeg';
-import unit2bImage from '../assets/images/6.jpeg';
+import unit2Image from '../assets/images/6.jpeg';
+import unit3Image from '../assets/images/4.jpeg';
 
 const HomePage = () => {
-  const propertyCards = [
-    {
-      id: 'unit-2a',
-      name: 'Two-Bedroom Executive Suite',
-      sqft: 950,
-      bedrooms: 2,
-      bathrooms: 1,
-      availability: 'Available November 2025',
-      status: 'available',
-      image: heroImage,
-    },
-    {
-      id: 'unit-1',
-      name: 'Two-Bedroom Executive Suite',
-      sqft: 950,
-      bedrooms: 2,
-      bathrooms: 1,
-      availability: 'Available December 2025',
-      status: 'available',
-      image: unit1Image,
-    },
-    {
-      id: 'unit-2b',
-      name: 'One-Bedroom Executive Residence',
-      sqft: 650,
-      bedrooms: 1,
-      bathrooms: 1,
-      availability: 'Occupied Until January 2026',
-      status: 'occupied',
-      image: unit2bImage,
-    },
-  ];
+  const [scrollY, setScrollY] = useState(0);
 
-  const amenities = [
-    'All utilities included (electric, gas, water, fiber internet)',
-    'Premium Samsung Bespoke & LG smart appliances',
-    'In-unit washer/dryer',
-    'Professional cleaning services',
-    'Smart home technology (Google Nest, programmable thermostats)',
-    'ADT security & video surveillance',
-    'Dedicated parking on property',
-    '0.25-acre private grounds with firepit',
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Helper function to split text into animated letters
+  const splitText = (text) => {
+    return text.split('').map((char, index) => (
+      <span key={index}>{char}</span>
+    ));
+  };
 
   return (
-    <div>
-      {/* Hero Section - Clean & Professional */}
-      <section className="relative min-h-screen flex items-center justify-center bg-white">
-        <div className="absolute inset-0 bg-gray-900">
+    <div className="bg-white">
+      {/* Hero Section - S&P Style with Nav Overlay */}
+      <section className="relative" style={{ height: '60vh', minHeight: '525px', maxHeight: '725px', overflow: 'hidden' }}>
+        <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Timeless Brookfields Executive Housing"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover"
+            style={{
+              filter: 'brightness(0.3)',
+              objectPosition: 'center',
+              transform: `translateY(${scrollY * 0.5}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
           />
         </div>
-
-        <div className="relative z-10 container text-center text-white py-section-xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-8 text-white letter-tight max-w-4xl mx-auto">
-            Executive Corporate Housing in Downtown Westport
-          </h1>
-          <div className="divider-short mx-auto bg-white"></div>
-          <p className="text-base md:text-lg lg:text-xl mb-12 max-w-2xl mx-auto font-light" style={{ color: '#f5f5f5', letterSpacing: '0.05em' }}>
-            Fully Furnished · All-Inclusive · Flexible Terms
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/properties" className="btn btn-light">
-              View Availability
-            </Link>
-            <Link to="/contact" className="btn btn-light">
-              Schedule Tour
-            </Link>
+        <div
+          className="relative z-10 h-full flex items-center justify-center text-center"
+          style={{
+            paddingTop: '100px',
+            transform: `translateY(${scrollY * 0.2}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        >
+          <div className="container">
+            <h1 style={{
+              fontSize: '48px',
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontWeight: 300,
+              color: '#FFFFFF',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              lineHeight: '1.4',
+              marginBottom: '32px'
+            }}>
+              EXECUTIVE CORPORATE HOUSING<br />IN DOWNTOWN WESTPORT
+            </h1>
+            <div style={{
+              width: '80px',
+              height: '1px',
+              backgroundColor: '#FFFFFF',
+              margin: '0 auto 32px auto'
+            }}></div>
+            <p style={{
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontSize: '16px',
+              fontWeight: 400,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: '#FFFFFF',
+              marginBottom: '48px'
+            }}>
+              FULLY FURNISHED · ALL-INCLUSIVE · FLEXIBLE TERMS
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link to="/properties" className="btn btn-primary">
+                VIEW AVAILABILITY
+              </Link>
+              <Link to="/contact" className="btn btn-secondary">
+                SCHEDULE TOUR
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Stats - Clean Grid */}
-      <section className="py-section section-off-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <BuildingLibraryIcon className="h-12 w-12 mb-4" style={{ color: 'var(--color-text)' }} />
-              <p className="text-xs uppercase letter-wide mb-2" style={{ color: 'var(--color-gray-dark)' }}>Historic Building</p>
-              <p className="font-medium" style={{ color: 'var(--color-text)' }}>Built 1886, Renovated 2025</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <MapIcon className="h-12 w-12 mb-4" style={{ color: 'var(--color-text)' }} />
-              <p className="text-xs uppercase letter-wide mb-2" style={{ color: 'var(--color-gray-dark)' }}>Metro-North</p>
-              <p className="font-medium" style={{ color: 'var(--color-text)' }}>5 Minutes to Station</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <MapPinIcon className="h-12 w-12 mb-4" style={{ color: 'var(--color-text)' }} />
-              <p className="text-xs uppercase letter-wide mb-2" style={{ color: 'var(--color-gray-dark)' }}>Compo Beach</p>
-              <p className="font-medium" style={{ color: 'var(--color-text)' }}>10 Minutes Away</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <SparklesIcon className="h-12 w-12 mb-4" style={{ color: 'var(--color-text)' }} />
-              <p className="text-xs uppercase letter-wide mb-2" style={{ color: 'var(--color-gray-dark)' }}>Downtown</p>
-              <p className="font-medium" style={{ color: 'var(--color-text)' }}>Walking Distance</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Properties Preview - Clean Showcases */}
+      {/* Key Highlights - 4 Column Grid - WHITE BACKGROUND */}
       <section className="py-section bg-white">
-        <div className="container text-center mb-20">
-          <div className="divider-short mx-auto"></div>
-          <h2 className="section-heading">Available Executive Residences</h2>
-          <p className="section-subheading mx-auto">
-            Modern luxury in the heart of downtown Westport
-          </p>
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="text-center">
+              <div style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                marginBottom: '24px',
+                color: '#999999'
+              }}>01</div>
+              <h3 style={{
+                fontSize: '18px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '16px',
+                color: 'var(--color-text)',
+                lineHeight: '1.6'
+              }}>
+                HISTORIC<br />BUILDING
+              </h3>
+              <p style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                color: 'var(--color-text-light)',
+                lineHeight: '1.6'
+              }}>
+                Built 1886<br />Renovated 2025
+              </p>
+            </div>
+            <div className="text-center">
+              <div style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                marginBottom: '24px',
+                color: '#999999'
+              }}>02</div>
+              <h3 style={{
+                fontSize: '18px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '16px',
+                color: 'var(--color-text)',
+                lineHeight: '1.6'
+              }}>
+                METRO-NORTH<br />ACCESS
+              </h3>
+              <p style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                color: 'var(--color-text-light)',
+                lineHeight: '1.6'
+              }}>
+                5 Minutes to Station<br />70 Min to NYC
+              </p>
+            </div>
+            <div className="text-center">
+              <div style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                marginBottom: '24px',
+                color: '#999999'
+              }}>03</div>
+              <h3 style={{
+                fontSize: '18px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '16px',
+                color: 'var(--color-text)',
+                lineHeight: '1.6'
+              }}>
+                DOWNTOWN<br />LOCATION
+              </h3>
+              <p style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                color: 'var(--color-text-light)',
+                lineHeight: '1.6'
+              }}>
+                Walking Distance<br />to Everything
+              </p>
+            </div>
+            <div className="text-center">
+              <div style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                marginBottom: '24px',
+                color: '#999999'
+              }}>04</div>
+              <h3 style={{
+                fontSize: '18px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '16px',
+                color: 'var(--color-text)',
+                lineHeight: '1.6'
+              }}>
+                ALL-INCLUSIVE<br />LIVING
+              </h3>
+              <p style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                color: 'var(--color-text-light)',
+                lineHeight: '1.6'
+              }}>
+                Fully Furnished<br />Utilities Included
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Welcome Section - Centered - CREAM BACKGROUND */}
+      <section style={{ backgroundColor: '#ECEAE6', padding: '100px 0' }}>
+        <div className="container text-center">
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <h2 style={{
+              fontSize: '32px',
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontWeight: 300,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: '32px',
+              color: 'var(--color-text)',
+              lineHeight: '1.5'
+            }}>
+              WHERE HISTORIC CHARM MEETS<br />MODERN SOPHISTICATION
+            </h2>
+            <div style={{
+              width: '80px',
+              height: '1px',
+              backgroundColor: 'var(--color-text)',
+              margin: '0 auto 32px auto'
+            }}></div>
+            <p style={{
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontSize: '15px',
+              lineHeight: '1.8',
+              color: 'var(--color-text-light)',
+              marginBottom: '0'
+            }}>
+              Timeless Brookfields offers premium executive housing in Connecticut's premier Gold Coast community. Our completely renovated 1886 property combines the elegance of historic architecture with cutting-edge modern amenities. Each spacious residence features generous square footage with abundant natural light from multiple well-appointed windows—providing the perfect blend of classic charm and contemporary comfort without the stark minimalism of modern high-rise condos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Residences Section - 3 Units Grid */}
+      <section style={{ position: 'relative', backgroundColor: '#F5F5F5', boxShadow: '0 30px 80px rgba(0, 0, 0, 0.35), 0 15px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5)' }}>
+        {/* Centered Heading Overlay */}
+        <div style={{
+          position: 'absolute',
+          top: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10,
+          textAlign: 'center',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          padding: '14px 38px',
+          backdropFilter: 'blur(4px)'
+        }}>
+          <h2 style={{
+            fontSize: '28px',
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontWeight: 300,
+            color: '#FFFFFF',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '0',
+            whiteSpace: 'nowrap'
+          }}>
+            AVAILABLE EXECUTIVE RESIDENCES
+          </h2>
         </div>
 
-        {/* Unit Showcases - Clean Layout */}
-        <div className="space-y-32">
-          {propertyCards.map((property, index) => (
-            <div key={property.id} className="container">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
-                index % 2 === 1 ? 'lg:grid-flow-dense' : ''
-              }`}>
-                {/* Image */}
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="aspect-4-3 relative overflow-hidden">
-                    <img
-                      src={property.image}
-                      alt={property.name}
-                      className="property-image w-full h-full object-cover"
-                    />
-                    <span className={`absolute top-6 right-6 badge ${
-                      property.status === 'available' ? 'badge-available' : 'badge-occupied'
-                    }`}>
-                      {property.availability}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Details */}
-                <div className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
-                  <div className="divider-short mb-8" style={{ marginLeft: 0 }}></div>
-                  <h3 className="text-3xl md:text-4xl font-serif font-bold mb-8 letter-tight" style={{ color: 'var(--color-text)' }}>
-                    {property.name}
+        {/* Top 2 Units - Side by Side - Full Width */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+            {/* Unit 1 */}
+            <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
+              <div style={{ aspectRatio: '3/2', overflow: 'hidden', position: 'relative' }}>
+                <img
+                  src={unit1Image}
+                  alt="Two-Bedroom Executive Suite"
+                  className="w-full h-full object-cover property-image-zoom"
+                />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  padding: '40px'
+                }}>
+                  <h3 className="property-title" style={{
+                    fontSize: '24px',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontWeight: 300,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                    transition: 'all 0.4s ease-in-out'
+                  }}>
+                    {splitText('TWO-BEDROOM')}<br />{splitText('EXECUTIVE')}<span style={{ display: 'inline-block', width: '0.5em' }}> </span>{splitText('SUITE')}
                   </h3>
-
-                  <div className="grid grid-cols-2 gap-8 mb-10">
-                    <div>
-                      <p className="text-xs uppercase letter-wide mb-3" style={{ color: 'var(--color-gray-dark)' }}>
-                        Size
-                      </p>
-                      <p className="text-2xl font-semibold" style={{ color: 'var(--color-text)' }}>{property.sqft} sq ft</p>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase letter-wide mb-3" style={{ color: 'var(--color-gray-dark)' }}>
-                        Layout
-                      </p>
-                      <p className="text-2xl font-semibold" style={{ color: 'var(--color-text)' }}>{property.bedrooms} BR | {property.bathrooms} BA</p>
-                    </div>
-                  </div>
-
                   <Link
-                    to={`/properties/${property.id}`}
-                    className="btn btn-primary"
+                    to="/properties"
+                    className="view-button"
+                    style={{
+                      fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      color: '#FFFFFF',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '20px',
+                      padding: '12px 0',
+                      width: 'fit-content',
+                      position: 'relative'
+                    }}
                   >
-                    View Full Details
+                    <span className="view-dash" style={{
+                      display: 'inline-block',
+                      width: '50px',
+                      height: '1px',
+                      backgroundColor: '#FFFFFF'
+                    }}></span>
+
+                    {/* Border drawing elements */}
+                    <span className="view-border-top"></span>
+                    <span className="view-border-right"></span>
+                    <span className="view-border-bottom"></span>
+                    <span className="view-border-left"></span>
+
+                    VIEW
                   </Link>
                 </div>
               </div>
             </div>
-          ))}
+
+            {/* Unit 2 */}
+            <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
+              <div style={{ aspectRatio: '3/2', overflow: 'hidden', position: 'relative' }}>
+                <img
+                  src={unit2Image}
+                  alt="Two-Bedroom Executive Suite"
+                  className="w-full h-full object-cover property-image-zoom"
+                />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  padding: '40px'
+                }}>
+                  <h3 className="property-title" style={{
+                    fontSize: '24px',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontWeight: 300,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                    transition: 'all 0.4s ease-in-out'
+                  }}>
+                    {splitText('TWO-BEDROOM')}<br />{splitText('EXECUTIVE')}<span style={{ display: 'inline-block', width: '0.5em' }}> </span>{splitText('SUITE')}
+                  </h3>
+                  <Link
+                    to="/properties"
+                    className="view-button"
+                    style={{
+                      fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      letterSpacing: '0.2em',
+                      textTransform: 'uppercase',
+                      color: '#FFFFFF',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '20px',
+                      padding: '12px 0',
+                      width: 'fit-content',
+                      position: 'relative'
+                    }}
+                  >
+                    <span className="view-dash" style={{
+                      display: 'inline-block',
+                      width: '50px',
+                      height: '1px',
+                      backgroundColor: '#FFFFFF'
+                    }}></span>
+
+                    {/* Border drawing elements */}
+                    <span className="view-border-top"></span>
+                    <span className="view-border-right"></span>
+                    <span className="view-border-bottom"></span>
+                    <span className="view-border-left"></span>
+
+                    VIEW
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {/* Unit 3 - Full Width */}
+        <div className="relative group" style={{ overflow: 'hidden', cursor: 'pointer' }}>
+            <div style={{ aspectRatio: '3/1', overflow: 'hidden', position: 'relative' }}>
+              <img
+                src={unit3Image}
+                alt="One-Bedroom Executive Residence"
+                className="w-full h-full object-cover property-image-zoom"
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                padding: '40px'
+              }}>
+                <h3 className="property-title" style={{
+                  fontSize: '24px',
+                  fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                  fontWeight: 300,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#FFFFFF',
+                  marginBottom: '16px',
+                  opacity: 1,
+                  transform: 'translateY(0)',
+                  transition: 'all 0.4s ease-in-out'
+                }}>
+                  {splitText('ONE-BEDROOM')}<br />{splitText('EXECUTIVE')}<span style={{ display: 'inline-block', width: '0.5em' }}> </span>{splitText('RESIDENCE')}
+                </h3>
+                <Link
+                  to="/properties"
+                  className="view-button"
+                  style={{
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    color: '#FFFFFF',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '12px 0',
+                    width: 'fit-content',
+                    position: 'relative'
+                  }}
+                >
+                  <span className="view-dash" style={{
+                    display: 'inline-block',
+                    width: '50px',
+                    height: '1px',
+                    backgroundColor: '#FFFFFF'
+                  }}></span>
+
+                  {/* Border drawing elements */}
+                  <span className="view-border-top"></span>
+                  <span className="view-border-right"></span>
+                  <span className="view-border-bottom"></span>
+                  <span className="view-border-left"></span>
+
+                  VIEW
+                </Link>
+              </div>
+            </div>
         </div>
       </section>
 
-      {/* Why Timeless Brookfields - Clean Layout */}
-      <section className="py-section section-off-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <div className="aspect-4-3 overflow-hidden">
-                <img
-                  src={entrywayImage}
-                  alt="Elegant entryway"
-                  className="property-image w-full h-full object-cover"
-                />
-              </div>
-            </div>
-            <div>
-              <div className="divider-short" style={{ marginLeft: 0 }}></div>
-              <h2 className="section-heading mb-6">Why Timeless Brookfields</h2>
-              <p className="text-base mb-10 leading-relaxed" style={{ color: 'var(--color-text-light)' }}>
-                Experience the perfect blend of historic charm and modern luxury. Our completely
-                renovated 1886 building offers executive-style living with every convenience included.
-              </p>
-              <ul className="space-y-4">
-                {amenities.map((amenity, index) => (
-                  <li key={index} className="flex items-start gap-4">
-                    <CheckCircleIcon className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: 'var(--color-accent)' }} />
-                    <span className="text-base" style={{ color: 'var(--color-text)' }}>{amenity}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Location Highlight */}
+      <section style={{ backgroundColor: '#FFFFFF', padding: '100px 0' }}>
+        <div className="container text-center">
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <h2 style={{
+              fontSize: '32px',
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontWeight: 300,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: '32px',
+              color: 'var(--color-text)',
+              lineHeight: '1.5'
+            }}>
+              THE HEART OF DOWNTOWN WESTPORT
+            </h2>
+            <div style={{
+              width: '80px',
+              height: '1px',
+              backgroundColor: 'var(--color-text)',
+              margin: '0 auto 32px auto'
+            }}></div>
+            <p style={{
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontSize: '15px',
+              lineHeight: '1.8',
+              color: 'var(--color-text-light)',
+              marginBottom: '48px'
+            }}>
+              Westport ranks among Connecticut's safest and most affluent communities, home to the world's largest hedge fund and offering a 70-minute express commute to Manhattan's Grand Central Terminal. Our property places you steps from acclaimed dining, cultural venues, and the vibrant downtown corridor.
+            </p>
+            <Link to="/location" className="btn btn-primary">
+              EXPLORE LOCATION
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Location Highlight - Clean */}
-      <section className="py-section bg-white">
+      {/* Corporate CTA */}
+      <section style={{ backgroundColor: '#ECEAE6', padding: '100px 0' }}>
         <div className="container text-center">
-          <div className="divider-short mx-auto"></div>
-          <h2 className="section-heading">The Heart of Downtown Westport</h2>
-          <p className="section-subheading max-w-3xl mx-auto">
-            Westport ranks among Connecticut's safest and most affluent communities, home to the world's
-            largest hedge fund and offering a 70-minute express commute to Manhattan's Grand Central Terminal.
-            Our property places you steps from acclaimed dining, cultural venues, and the vibrant downtown corridor.
-          </p>
-          <Link to="/location" className="btn btn-primary">
-            Explore Location
-          </Link>
-        </div>
-      </section>
-
-      {/* Corporate Partners - Clean */}
-      <section className="py-section section-gray">
-        <div className="container text-center">
-          <div className="divider-short mx-auto"></div>
-          <h2 className="section-heading">Trusted by Leading Organizations</h2>
-          <p className="text-lg mb-8 max-w-3xl mx-auto" style={{ color: 'var(--color-text)' }}>
-            Seamless relocation solutions for employees joining Fairfield County's premier companies
-          </p>
-          <p className="mb-12 max-w-2xl mx-auto" style={{ color: 'var(--color-text-light)' }}>
-            We partner with HR departments and relocation managers to provide turnkey housing for
-            executives, consultants, and healthcare professionals on temporary assignments.
-          </p>
-          <Link to="/corporate" className="btn btn-primary">
-            Corporate Inquiries
-          </Link>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{
+              fontSize: '28px',
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontWeight: 300,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: '32px',
+              color: 'var(--color-text)'
+            }}>
+              TRUSTED BY LEADING ORGANIZATIONS
+            </h2>
+            <div style={{
+              width: '80px',
+              height: '1px',
+              backgroundColor: 'var(--color-text)',
+              margin: '0 auto 32px auto'
+            }}></div>
+            <p style={{
+              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+              fontSize: '15px',
+              lineHeight: '1.8',
+              color: 'var(--color-text-light)',
+              marginBottom: '48px'
+            }}>
+              We partner with HR departments and relocation managers to provide turnkey housing for executives, consultants, and healthcare professionals on temporary assignments in Fairfield County.
+            </p>
+            <Link to="/corporate" className="btn btn-primary">
+              CORPORATE INQUIRIES
+            </Link>
+          </div>
         </div>
       </section>
     </div>

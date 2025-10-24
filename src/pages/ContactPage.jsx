@@ -43,8 +43,8 @@ const ContactPage = () => {
     e.preventDefault();
 
     try {
-      // Send to Formspree - replace with your Formspree endpoint
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      // Send to Formspree
+      const response = await fetch('https://formspree.io/f/mblprgwg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import heroImage from '../assets/images/1.jpeg';
+import heroImage from '../assets/images/115Wilton.jpeg';
+import sideImageLeft from '../assets/images/27.png';
+import sideImageRight from '../assets/images/unit1.png';
+import bottomImageLeft from '../assets/images/16.png';
+import bottomImageRight from '../assets/images/7.jpeg';
 import entrywayImage from '../assets/images/3.jpeg';
-import unit1Image from '../assets/images/9.jpeg';
+import unit1Image from '../assets/images/6.png';
 import unit2Image from '../assets/images/6.jpeg';
 import image4 from '../assets/images/4.jpeg';
 import image5 from '../assets/images/5.jpeg';
@@ -11,6 +15,10 @@ import image7 from '../assets/images/7.jpeg';
 import image8 from '../assets/images/8.jpeg';
 import image15 from '../assets/images/15.png';
 import image16 from '../assets/images/16.png';
+import bedroom1 from '../assets/images/gallery/bedroom1.PNG';
+import bedroom2 from '../assets/images/gallery/bedroom2.PNG';
+import gallery1 from '../assets/images/gallery/1.png';
+import gallery9 from '../assets/images/gallery/9.jpeg';
 
 const AboutPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -47,40 +55,140 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       {/* Hero Section with Background Image - S&P Style */}
-      <section className="relative" style={{ height: '60vh', minHeight: '525px', maxHeight: '725px', overflow: 'hidden' }}>
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Timeless Brookfields"
-            className="w-full h-full object-cover"
-            style={{
-              filter: 'brightness(0.6)',
-              objectPosition: 'center',
-              transform: `translateY(${scrollY * 0.5}px)`,
-              transition: 'transform 0.1s ease-out'
-            }}
-          />
-        </div>
-        <div
-          className="relative z-10 h-full flex items-center justify-center text-center"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
+      <section className="relative" style={{ overflow: 'hidden', padding: '40px 0', backgroundColor: '#f5f5f5' }}>
+        <div className="relative" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '1000px' }}>
+          {/* Left image - rotated slightly left */}
+          <div style={{
+            position: 'absolute',
+            left: '3%',
+            top: '-5%',
+            zIndex: 1,
+            transform: `rotate(-6deg) translateY(${scrollY * 0.15}px)`,
+            boxShadow: '0 15px 50px rgba(0,0,0,0.3)',
+            border: '12px solid #ffffff',
             transition: 'transform 0.1s ease-out'
-          }}
-        >
-          <div className="container">
-            <h1 style={{
-              fontSize: '40px',
-              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontWeight: 300,
-              color: '#FFFFFF',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              lineHeight: '1.4',
-              marginBottom: 0
+          }}>
+            <img
+              src={sideImageLeft}
+              alt="Interior Detail"
+              style={{
+                width: '550px',
+                height: '650px',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+          </div>
+
+          {/* Center image - main focal point */}
+          <div style={{
+            position: 'absolute',
+            zIndex: 2,
+            transform: `scale(1.05) translateY(${scrollY * 0.08}px)`,
+            boxShadow: '0 25px 70px rgba(0,0,0,0.4)',
+            backgroundColor: '#ffffff',
+            border: '12px solid #ffffff',
+            transition: 'transform 0.1s ease-out'
+          }}>
+            <img
+              src={heroImage}
+              alt="Timeless Brookfields"
+              style={{
+                width: '800px',
+                height: '900px',
+                objectFit: 'contain',
+                display: 'block'
+              }}
+            />
+          </div>
+
+          {/* Right image - rotated slightly right */}
+          <div style={{
+            position: 'absolute',
+            right: '3%',
+            top: '5%',
+            zIndex: 4,
+            transform: `rotate(6deg) translateY(${scrollY * 0.12}px)`,
+            boxShadow: '0 15px 50px rgba(0,0,0,0.3)',
+            border: '12px solid #ffffff',
+            transition: 'transform 0.1s ease-out'
+          }}>
+            <img
+              src={sideImageRight}
+              alt="Unit Interior"
+              style={{
+                width: '550px',
+                height: '650px',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+          </div>
+
+          {/* Bottom Left image - rotated slightly left */}
+          <div style={{
+            position: 'absolute',
+            left: '15%',
+            bottom: '3%',
+            zIndex: 1,
+            transform: `rotate(-4deg) translateY(${scrollY * 0.18}px)`,
+            boxShadow: '0 15px 50px rgba(0,0,0,0.3)',
+            border: '12px solid #ffffff',
+            transition: 'transform 0.1s ease-out'
+          }}>
+            <img
+              src={bottomImageLeft}
+              alt="Interior Detail"
+              style={{
+                width: '450px',
+                height: '550px',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+          </div>
+
+          {/* Bottom Right image - rotated slightly right */}
+          <div style={{
+            position: 'absolute',
+            right: '15%',
+            bottom: '3%',
+            zIndex: 3,
+            transform: `rotate(4deg) translateY(${scrollY * 0.16}px) scaleX(-1)`,
+            boxShadow: '0 15px 50px rgba(0,0,0,0.3)',
+            border: '12px solid #ffffff',
+            transition: 'transform 0.1s ease-out'
+          }}>
+            <img
+              src={bottomImageRight}
+              alt="Unit Detail"
+              style={{
+                width: '450px',
+                height: '550px',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center text-center" style={{ zIndex: 10 }}>
+            <div style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              padding: '20px 60px',
+              backdropFilter: 'blur(4px)'
             }}>
-              EXECUTIVE CORPORATE HOUSING<br />IN DOWNTOWN WESTPORT
-            </h1>
+              <h1 style={{
+                fontSize: '40px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 300,
+                color: '#FFFFFF',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                lineHeight: '1.4',
+                marginBottom: 0
+              }}>
+                HISTORIC CHARM MEETS<br />MODERN LUXURY
+              </h1>
+            </div>
           </div>
         </div>
       </section>
@@ -308,18 +416,9 @@ const AboutPage = () => {
               fontSize: '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
-              marginBottom: '24px'
+              marginBottom: '0'
             }}>
               Designed for professionals who demand excellence without compromise
-            </p>
-            <p style={{
-              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '12px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#999999'
-            }}>
-              —TIMELESS BROOKFIELDS LLC
             </p>
           </div>
         </div>
@@ -354,7 +453,7 @@ const AboutPage = () => {
               color: 'var(--color-text-light)',
               textAlign: 'center'
             }}>
-              In 2025, we acquired a historic 1886 property in the heart of downtown Westport and transformed it into something extraordinary. Every detail reflects our commitment to quality: premium Samsung Bespoke appliances, quartz countertops, hickory hardwood flooring, and smart home technology throughout. We crafted an experience that feels like a luxury Manhattan condominium nestled in a peaceful residential enclave.
+              In 2025, we acquired a historic 1886 property in the heart of downtown Westport and transformed it into something extraordinary. Every detail reflects our commitment to quality: premium Samsung Bespoke appliances, quartz countertops, hickory hardwood flooring, and smart home technology throughout. The result is an environment that combines the sophistication of a luxury Manhattan residence with the tranquility of Westport's Gold Coast setting.
             </p>
           </div>
         </div>
@@ -545,18 +644,18 @@ const AboutPage = () => {
             </div>
           </div>
           {/* Right - 2x2 Image Grid */}
-          <div className="grid grid-cols-2 grid-rows-2 gap-0" style={{ minHeight: '500px' }}>
-            <div style={{ overflow: 'hidden' }}>
-              <img src={image4} alt="Lifestyle 1" className="w-full h-full object-cover" />
+          <div className="grid grid-cols-2 grid-rows-2 gap-0">
+            <div style={{ overflow: 'hidden', height: '343px' }}>
+              <img src={bedroom1} alt="Bedroom 1" className="w-full h-full object-cover" />
             </div>
-            <div style={{ overflow: 'hidden' }}>
-              <img src={image5} alt="Lifestyle 2" className="w-full h-full object-cover" />
+            <div style={{ overflow: 'hidden', height: '343px' }}>
+              <img src={bedroom2} alt="Bedroom 2" className="w-full h-full object-cover" />
             </div>
-            <div style={{ overflow: 'hidden' }}>
-              <img src={image7} alt="Lifestyle 3" className="w-full h-full object-cover" />
+            <div style={{ overflow: 'hidden', height: '343px' }}>
+              <img src={gallery1} alt="Kitchen" className="w-full h-full object-cover" />
             </div>
-            <div style={{ overflow: 'hidden' }}>
-              <img src={image8} alt="Lifestyle 4" className="w-full h-full object-cover" />
+            <div style={{ overflow: 'hidden', height: '343px' }}>
+              <img src={gallery9} alt="Living Space" className="w-full h-full object-cover" style={{ objectPosition: 'center top' }} />
             </div>
           </div>
         </div>
@@ -618,18 +717,9 @@ const AboutPage = () => {
               fontSize: '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
-              marginBottom: '24px'
+              marginBottom: '0'
             }}>
               Where historic charm meets modern sophistication in Connecticut's premier Gold Coast community
-            </p>
-            <p style={{
-              fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '12px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#999999'
-            }}>
-              —TIMELESS BROOKFIELDS LLC
             </p>
           </div>
         </div>
@@ -639,16 +729,16 @@ const AboutPage = () => {
       <section>
         <div className="grid grid-cols-2 gap-0">
           <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
-            <img src={image16} alt="Interior 1" className="w-full h-full object-cover" />
+            <img src={sideImageLeft} alt="Interior Detail" className="w-full h-full object-cover" />
           </div>
           <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
-            <img src={image15} alt="Interior 2" className="w-full h-full object-cover" />
+            <img src={bedroom1} alt="Bedroom" className="w-full h-full object-cover" />
           </div>
           <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
-            <img src={image7} alt="Interior 3" className="w-full h-full object-cover" />
+            <img src={image7} alt="Living Space" className="w-full h-full object-cover" />
           </div>
           <div style={{ aspectRatio: '2.5/1', overflow: 'hidden' }}>
-            <img src={image8} alt="Interior 4" className="w-full h-full object-cover" />
+            <img src={sideImageRight} alt="Unit Interior" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

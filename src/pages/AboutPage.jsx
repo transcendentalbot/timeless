@@ -8,17 +8,17 @@ import bottomImageLeft from '../assets/images/16.png';
 import bottomImageRight from '../assets/images/7.jpeg';
 import entrywayImage from '../assets/images/3.jpeg';
 import unit1Image from '../assets/images/6.png';
-import unit2Image from '../assets/images/6.jpeg';
-import image4 from '../assets/images/4.jpeg';
-import image5 from '../assets/images/5.jpeg';
 import image7 from '../assets/images/7.jpeg';
-import image8 from '../assets/images/8.jpeg';
 import image15 from '../assets/images/15.png';
 import image16 from '../assets/images/16.png';
 import bedroom1 from '../assets/images/gallery/bedroom1.PNG';
 import bedroom2 from '../assets/images/gallery/bedroom2.PNG';
 import gallery1 from '../assets/images/gallery/1.png';
+import gallery6 from '../assets/images/gallery/6.png';
+import gallery7 from '../assets/images/gallery/7.jpeg';
 import gallery9 from '../assets/images/gallery/9.jpeg';
+import gallery22 from '../assets/images/gallery/22.png';
+import gallery27 from '../assets/images/gallery/27.png';
 
 const AboutPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,11 +34,11 @@ const AboutPage = () => {
   }, []);
 
   const carouselImages = [
-    { src: unit2Image, alt: 'Executive Suite 1' },
-    { src: image4, alt: 'Interior Detail 1' },
-    { src: image5, alt: 'Interior Detail 2' },
-    { src: image7, alt: 'Living Space' },
-    { src: image8, alt: 'Modern Amenities' },
+    { src: bedroom1, alt: 'Modern Bedroom' },
+    { src: gallery1, alt: 'Gourmet Kitchen' },
+    { src: bedroom2, alt: 'Bedroom Suite' },
+    { src: gallery27, alt: 'Interior Detail' },
+    { src: gallery22, alt: 'Unit Features' },
   ];
 
   const nextSlide = () => {

@@ -149,20 +149,6 @@ const ContactPage = () => {
               Send Us An Inquiry
             </h2>
 
-              {submitted && (
-                <div style={{
-                  marginBottom: '32px',
-                  padding: '20px',
-                  backgroundColor: '#F0F9F4',
-                  border: '1px solid #C6E6D5',
-                  fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-                  fontSize: '14px',
-                  color: '#2F855A'
-                }}>
-                  Thank you! We'll respond within 24 hours.
-                </div>
-              )}
-
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {/* Personal Information */}
                 <div>
@@ -686,6 +672,22 @@ const ContactPage = () => {
                 >
                   Submit Inquiry
                 </button>
+
+                {submitted && (
+                  <div style={{
+                    marginTop: '20px',
+                    padding: '20px',
+                    backgroundColor: '#F0F9F4',
+                    border: '1px solid #C6E6D5',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontSize: '14px',
+                    color: '#2F855A',
+                    textAlign: 'center',
+                    fontWeight: 500
+                  }}>
+                    ✓ Thank you! We'll respond within 24 hours.
+                  </div>
+                )}
 
                 <p style={{
                   fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',

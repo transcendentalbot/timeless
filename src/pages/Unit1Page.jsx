@@ -1,15 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import heroImage from '../assets/images/6.jpeg';
-import featureImage from '../assets/images/1.jpeg';
-import image3 from '../assets/images/3.jpeg';
-import image6 from '../assets/images/6.jpeg';
-import image7 from '../assets/images/7.jpeg';
-import image8 from '../assets/images/8.jpeg';
-import image11 from '../assets/images/11.jpeg';
-import image12 from '../assets/images/12.jpeg';
-import floorplan from '../assets/images/floorplan.jpeg';
+import heroImage from '../assets/images/unit1.png';
+import featureImage from '../assets/images/unit1.png';
+import floorplan from '../assets/images/floorplanunit1.png';
+
+// Gallery images
+import gallery1 from '../assets/images/gallery/1.png';
+import gallery6 from '../assets/images/gallery/6.png';
+import gallery7 from '../assets/images/gallery/7.jpeg';
+import gallery9 from '../assets/images/gallery/9.jpeg';
+import gallery16 from '../assets/images/gallery/16.PNG';
+import gallery22 from '../assets/images/gallery/22.png';
+import gallery27 from '../assets/images/gallery/27.png';
+import galleryBedroom1 from '../assets/images/gallery/bedroom1.PNG';
+import galleryBedroom2 from '../assets/images/gallery/bedroom2.PNG';
+import galleryUnit1 from '../assets/images/gallery/unit1.png';
+import galleryUnit1Living from '../assets/images/gallery/unit1living.png';
 
 const Unit1Page = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -29,7 +36,20 @@ const Unit1Page = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const unitImages = [image3, image6, image7, image8, image11, image12, floorplan];
+  const unitImages = [
+    galleryUnit1,
+    galleryUnit1Living,
+    gallery16,
+    gallery1,
+    gallery22,
+    galleryBedroom1,
+    gallery9,
+    galleryBedroom2,
+    gallery7,
+    gallery6,
+    gallery27,
+    floorplan
+  ];
 
   const openModal = (index) => {
     setCurrentImageIndex(index);
@@ -154,7 +174,7 @@ const Unit1Page = () => {
             marginBottom: '48px',
             textAlign: 'center'
           }}>
-            Experience executive living at its finest in this beautifully appointed two-bedroom suite. The residence features an elegant entryway leading to a spacious open-plan living and dining area, perfect for both work and relaxation. The gourmet kitchen boasts quartz countertops, premium appliances, and ample storage. Both bedrooms offer generous closet space and peaceful retreats. With in-unit laundry, modern climate control, and thoughtful design throughout, this suite provides all the comforts of home in the heart of downtown Westport.
+            Experience executive living at its finest in this beautifully appointed first-floor two-bedroom suite. The residence features premium hickory hardwood flooring throughout, an elegant entryway leading to a spacious open-plan living and dining area, perfect for both work and relaxation. The gourmet kitchen showcases European-style white high-gloss MDF cabinetry with soft-touch, soft-close mechanisms, quartz countertops, and premium smart appliances. The modern bathroom features large-format white polished porcelain tiles. Both bedrooms offer generous closet space and peaceful retreats, with the primary bedroom featuring glimpses of the scenic Saugatuck River. With in-unit laundry, two dedicated parking spaces, and thoughtful design throughout, this suite provides all the comforts of home in the heart of downtown Westport.
           </p>
 
           {/* Specifications Grid */}
@@ -297,10 +317,127 @@ const Unit1Page = () => {
               src={featureImage}
               alt="Designer Kitchen Feature"
               className="w-full h-full object-cover"
-              style={{
-                filter: 'brightness(0.8)'
-              }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Smart Home & Energy Features Section */}
+      <section style={{
+        backgroundColor: '#FFFFFF',
+        padding: '80px 0'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 20px'
+        }}>
+          <h2 style={{
+            fontSize: '32px',
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontWeight: 300,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '32px',
+            color: 'var(--color-text)',
+            textAlign: 'center',
+            lineHeight: '1.5'
+          }}>
+            SMART HOME AUTOMATION<br />& PREMIUM APPLIANCES
+          </h2>
+          <div style={{
+            width: '80px',
+            height: '1px',
+            backgroundColor: 'var(--color-text)',
+            margin: '0 auto 48px auto'
+          }}></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Home Automation & Appliances */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Smart Appliances & Security
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Samsung Bespoke AI Vision Refrigerator with inventory management</li>
+                <li>• Samsung Bespoke Microwave with Sensor Cook and Smart app</li>
+                <li>• LG ThinQ Smart Washer/Dryer with Sensor Dry technology</li>
+                <li>• LG Smart Propane Gas Range with Smart app</li>
+                <li>• ADT Security System with mobile app control</li>
+                <li>• Keypad entry system - No physical keys needed</li>
+              </ul>
+            </div>
+
+            {/* Energy Features */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Energy Efficiency
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Energy-efficient LED recessed lighting throughout</li>
+                <li>• Smart appliances with energy-saving modes</li>
+                <li>• Modern LED fixtures in all rooms</li>
+                <li>• Clean-burning propane gas for cooking</li>
+              </ul>
+            </div>
+
+            {/* Sustainable Living */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Healthy & Sustainable Living
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Premium stainless steel & cast iron cookware provided</li>
+                <li>• Glassware for food storage - No plastic containers</li>
+                <li>• Zero non-stick coatings or aluminum cookware</li>
+                <li>• Comprehensive recycling program</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -405,6 +542,89 @@ const Unit1Page = () => {
           </div>
         </div>
       </section>
+
+      {/* Image Modal */}
+      {isModalOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.95)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+          onClick={closeModal}
+        >
+          <button
+            onClick={closeModal}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              background: 'none',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+          >
+            <XMarkIcon style={{ width: '32px', height: '32px' }} />
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            style={{
+              position: 'absolute',
+              left: '20px',
+              background: 'none',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+          >
+            <ChevronLeftIcon style={{ width: '48px', height: '48px' }} />
+          </button>
+
+          <img
+            src={unitImages[currentImageIndex]}
+            alt="Unit view"
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              objectFit: 'contain'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            style={{
+              position: 'absolute',
+              right: '20px',
+              background: 'none',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+          >
+            <ChevronRightIcon style={{ width: '48px', height: '48px' }} />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

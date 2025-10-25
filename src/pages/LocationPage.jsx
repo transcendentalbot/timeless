@@ -828,12 +828,13 @@ const LocationPage = () => {
         padding: '0',
         backgroundColor: '#000000'
       }}>
+        {/* First row - 3 images */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '0'
         }}>
-          {[image17, image18, image19, image20, image21].map((image, index) => (
+          {[image17, image18, image19].map((image, index) => (
             <div key={index} style={{
               aspectRatio: '1',
               overflow: 'hidden',
@@ -842,6 +843,31 @@ const LocationPage = () => {
               <img
                 src={image}
                 alt={`Westport Location ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'brightness(0.8)'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        {/* Second row - 2 images expanded */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '0'
+        }}>
+          {[image20, image21].map((image, index) => (
+            <div key={index + 3} style={{
+              aspectRatio: '1.5',
+              overflow: 'hidden',
+              position: 'relative'
+            }}>
+              <img
+                src={image}
+                alt={`Westport Location ${index + 4}`}
                 style={{
                   width: '100%',
                   height: '100%',

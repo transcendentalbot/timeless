@@ -1,14 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import heroImage from '../assets/images/4.jpeg';
+import heroImage from '../assets/images/22.png';
 import featureImage from '../assets/images/5.jpeg';
-import image4 from '../assets/images/4.jpeg';
-import image5 from '../assets/images/5.jpeg';
-import image8 from '../assets/images/8.jpeg';
-import image10 from '../assets/images/10.jpeg';
-import image11 from '../assets/images/11.jpeg';
-import floorplan from '../assets/images/floorplan.jpeg';
+import floorplan from '../assets/images/floorplanunit2b.png';
+
+// Gallery images
+import gallery1 from '../assets/images/gallery/1.png';
+import gallery6 from '../assets/images/gallery/6.png';
+import gallery7 from '../assets/images/gallery/7.jpeg';
+import gallery9 from '../assets/images/gallery/9.jpeg';
+import gallery16 from '../assets/images/gallery/16.PNG';
+import gallery22 from '../assets/images/gallery/22.png';
+import gallery27 from '../assets/images/gallery/27.png';
+import galleryBedroom1 from '../assets/images/gallery/bedroom1.PNG';
+import galleryBedroom2 from '../assets/images/gallery/bedroom2.PNG';
+import galleryUnit1 from '../assets/images/gallery/unit1.png';
+import galleryUnit1Living from '../assets/images/gallery/unit1living.png';
 
 const Unit2BPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -28,7 +36,20 @@ const Unit2BPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const unitImages = [image4, image5, image8, image10, image11, floorplan];
+  const unitImages = [
+    galleryUnit1,
+    galleryUnit1Living,
+    gallery16,
+    gallery1,
+    gallery22,
+    galleryBedroom1,
+    gallery9,
+    galleryBedroom2,
+    gallery7,
+    gallery6,
+    gallery27,
+    floorplan
+  ];
 
   const openModal = (index) => {
     setCurrentImageIndex(index);
@@ -153,7 +174,7 @@ const Unit2BPage = () => {
             marginBottom: '48px',
             textAlign: 'center'
           }}>
-            Perfectly suited for the discerning individual executive, this one-bedroom residence combines efficiency with elegance. The smartly designed 650-square-foot space features a comfortable bedroom, a well-appointed living area, and a full kitchen equipped with modern appliances and quartz countertops. Despite its compact footprint, the residence offers all essential amenities including in-unit laundry, climate control, and high-speed internet. The thoughtful layout maximizes space and functionality while maintaining the sophisticated aesthetic that defines Timeless Brookfields.
+            Perfectly suited for the discerning individual executive, this one-bedroom residence combines efficiency with elegance. The smartly designed 650-square-foot space features soaring high ceilings crowned by an expansive skylight that floods the residence with natural light throughout the day. The comfortable bedroom, well-appointed living area, and full kitchen with solid wood white shaker cabinetry accented by elegant gold hardware, premium appliances, and quartz countertops create a sophisticated living environment. Despite its compact footprint, the residence offers all essential amenities including in-unit laundry, climate control, and high-speed internet. The thoughtful layout maximizes space and functionality while maintaining the sophisticated aesthetic that defines Timeless Brookfields.
           </p>
 
           {/* Specifications Grid */}
@@ -229,7 +250,7 @@ const Unit2BPage = () => {
                 color: 'var(--color-text)',
                 marginBottom: '8px'
               }}>
-                1
+                1-2
               </div>
               <div style={{
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
@@ -239,7 +260,7 @@ const Unit2BPage = () => {
                 textTransform: 'uppercase',
                 color: 'var(--color-text-light)'
               }}>
-                Guest
+                Guests
               </div>
             </div>
           </div>
@@ -282,7 +303,7 @@ const Unit2BPage = () => {
               color: '#CCCCCC',
               marginBottom: '0'
             }}>
-              Unit 2B exemplifies intelligent design, where every element serves a purpose without sacrificing style. The open layout creates a sense of spaciousness, while the full kitchen with quartz countertops and premium appliances provides complete culinary functionality. The bedroom offers a peaceful retreat with ample closet storage, and the living area adapts seamlessly from workspace to entertainment zone. Modern conveniences like in-unit laundry and climate control ensure comfort, while the residence's location in a historic 1886 building adds character and charm that modern apartments simply cannot match.
+              Unit 2B exemplifies intelligent design, where every element serves a purpose without sacrificing style. The distinctive high ceilings and expansive skylight create an airy, light-filled atmosphere that sets this residence apart. The open layout enhances the sense of spaciousness, while the full kitchen with solid wood white shaker cabinetry, elegant gold hardware, quartz countertops, and premium appliances provides complete culinary functionality. The bedroom offers a peaceful retreat with ample closet storage, and the living area adapts seamlessly from workspace to entertainment zone. Modern conveniences like climate control ensure comfort, while the residence's location in a historic 1886 building adds character and charm that modern apartments simply cannot match.
             </p>
           </div>
 
@@ -300,6 +321,126 @@ const Unit2BPage = () => {
                 filter: 'brightness(0.8)'
               }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Smart Home & Energy Features Section */}
+      <section style={{
+        backgroundColor: '#FFFFFF',
+        padding: '80px 0'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 20px'
+        }}>
+          <h2 style={{
+            fontSize: '32px',
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontWeight: 300,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '32px',
+            color: 'var(--color-text)',
+            textAlign: 'center',
+            lineHeight: '1.5'
+          }}>
+            SMART HOME AUTOMATION<br />& PREMIUM APPLIANCES
+          </h2>
+          <div style={{
+            width: '80px',
+            height: '1px',
+            backgroundColor: 'var(--color-text)',
+            margin: '0 auto 48px auto'
+          }}></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Home Automation & Appliances */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Smart Appliances & Security
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Samsung Bespoke AI Vision Refrigerator with inventory management</li>
+                <li>• Samsung Bespoke Microwave with Sensor Cook and Smart app</li>
+                <li>• LG ThinQ Smart Washer/Dryer with Sensor Dry technology</li>
+                <li>• LG Smart Propane Gas Range with Smart app</li>
+                <li>• ADT Security System with mobile app control</li>
+                <li>• Keypad entry system - No physical keys needed</li>
+              </ul>
+            </div>
+
+            {/* Energy Features */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Energy Efficiency
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Energy-efficient LED recessed lighting throughout</li>
+                <li>• Smart appliances with energy-saving modes</li>
+                <li>• Modern LED fixtures in all rooms</li>
+                <li>• Clean-burning propane gas for cooking</li>
+              </ul>
+            </div>
+
+            {/* Sustainable Living */}
+            <div>
+              <h3 style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                marginBottom: '24px',
+                color: 'var(--color-text)'
+              }}>
+                Healthy & Sustainable Living
+              </h3>
+              <ul style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '2',
+                color: 'var(--color-text-light)',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li>• Premium stainless steel & cast iron cookware provided</li>
+                <li>• Glassware for food storage - No plastic containers</li>
+                <li>• Zero non-stick coatings or aluminum cookware</li>
+                <li>• Comprehensive recycling program</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

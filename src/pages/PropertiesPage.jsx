@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import heroImage from '../assets/images/15.png';
-import unit1Image from '../assets/images/9.jpeg';
-import unit2Image from '../assets/images/6.jpeg';
-import unit3Image from '../assets/images/4.jpeg';
+import heroImage from '../assets/images/6.png';
+import unit1Image from '../assets/images/unit1.png';
+import unit2Image from '../assets/images/5.png';
+import unit3Image from '../assets/images/22.png';
 import image1 from '../assets/images/1.jpeg';
 import image2 from '../assets/images/2.jpeg';
 import image3 from '../assets/images/3.jpeg';
@@ -48,8 +48,8 @@ const PropertiesPage = () => {
       availability: 'Available November 2025',
       status: 'available',
       image: unit1Image,
-      description: 'Spacious two-bedroom residence featuring open-concept living, designer kitchen with quartz countertops, premium appliances, and modern finishes throughout.',
-      detailedDescription: 'This exceptional two-bedroom executive suite offers the perfect balance of space and sophistication. The open-concept layout features a generous living area with abundant natural light from multiple windows, a fully-equipped designer kitchen with quartz countertops and premium stainless steel appliances, and two comfortable bedrooms. Modern amenities include in-unit laundry, central heating and cooling, and high-speed internet connectivity. Ideal for executives, relocating professionals, or small families seeking temporary housing with a permanent feel.',
+      description: 'Spacious two-bedroom residence featuring open-concept living, European-style designer kitchen, and modern finishes throughout. Primary bedroom offers glimpses of river views.',
+      detailedDescription: 'This exceptional two-bedroom executive suite offers the perfect balance of space and sophistication. The open-concept layout features a generous living area with abundant natural light from multiple windows. The gourmet kitchen showcases European-style white matte MDF cabinetry with soft-touch, soft-close mechanisms, quartz countertops, and premium smart appliances. The modern bathroom is appointed with large-format white polished porcelain tiles. The primary bedroom provides peaceful glimpses of the river, while the second bedroom offers comfortable accommodations. Modern amenities include in-unit laundry and high-speed internet connectivity. Ideal for professionals, relocating families, or anyone seeking temporary housing with a permanent feel.',
       images: [image1, image2, image3, image5, image7, image10, floorplan]
     },
     {
@@ -72,7 +72,7 @@ const PropertiesPage = () => {
       sqft: 650,
       bedrooms: 1,
       bathrooms: 1,
-      occupancy: '1 guest',
+      occupancy: '1-2 guests',
       availability: 'Occupied Until January 2026',
       status: 'occupied',
       image: unit3Image,
@@ -116,7 +116,7 @@ const PropertiesPage = () => {
               marginBottom: '24px',
               color: '#FFFFFF'
             }}>
-              EXECUTIVE RESIDENCES
+              OUR EXECUTIVE RESIDENCES
             </h1>
             <div style={{
               width: '80px',
@@ -166,13 +166,243 @@ const PropertiesPage = () => {
               marginBottom: '0',
               textAlign: 'center'
             }}>
-              Built in 1886, this historic Westport property has been meticulously renovated to offer the perfect fusion of classic architectural charm and contemporary luxury. Each of our three executive residences features generous square footage, abundant natural light from period windows, and modern amenities that today's professionals demand. Unlike sterile modern high-rises, our residences provide character, warmth, and a genuine sense of home—ideal for executives, relocating professionals, and corporate housing needs in Connecticut's prestigious Gold Coast.
+              Built in 1886, this historic Westport property has been meticulously renovated to offer the perfect fusion of classic architectural charm and contemporary luxury. Each of our three executive residences features generous square footage with abundant natural light from period windows, complemented by premium hickory wood flooring, high-gloss designer kitchen cabinetry, and large-format porcelain tiles that create a seamless, sophisticated aesthetic. These thoughtfully selected finishes elevate each space beyond standard corporate housing, providing the character, warmth, and refined elegance that discerning executives expect—ideal for relocating professionals and corporate housing needs in Connecticut's prestigious Gold Coast.
             </p>
         </div>
       </section>
 
-      {/* Available Executive Residences Section - Matching HomePage */}
+      {/* Tagline Section */}
       <section style={{
+        backgroundColor: '#ECEAE6',
+        padding: '80px 0'
+      }}>
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 20px',
+          textAlign: 'center'
+        }}>
+          <h2 style={{
+            fontSize: '28px',
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontWeight: 300,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '32px',
+            color: 'var(--color-text)',
+            lineHeight: '1.5'
+          }}>
+            Your Well-Being, Our Priority
+          </h2>
+          <div style={{
+            width: '80px',
+            height: '1px',
+            backgroundColor: 'var(--color-text)',
+            margin: '0 auto 32px auto'
+          }}></div>
+          <p style={{
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontSize: '18px',
+            lineHeight: '1.8',
+            color: 'var(--color-text)',
+            marginBottom: '0',
+            fontWeight: 300,
+            letterSpacing: '0.05em'
+          }}>
+            Our approach to modern living prioritizes both your well-being and environmental stewardship.
+          </p>
+        </div>
+      </section>
+
+      {/* Smart Home Automation Section */}
+      <section style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-8">
+          {/* Left - Title & Description (Narrower - 25%) */}
+          <div className="lg:col-span-2" style={{
+            backgroundColor: '#2d2d2d',
+            padding: '80px 40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <div style={{ maxWidth: '350px' }}>
+              <h2 style={{
+                fontSize: '24px',
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontWeight: 300,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: '32px',
+                color: '#E5E4E2',
+                lineHeight: '1.3'
+              }}>
+                Smart Home Automation & Premium Appliances
+              </h2>
+              <div style={{
+                width: '60px',
+                height: '2px',
+                background: 'linear-gradient(90deg, #E5E4E2, transparent)',
+                marginBottom: '32px'
+              }}></div>
+              <p style={{
+                fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                fontSize: '14px',
+                lineHeight: '1.8',
+                color: '#B0B0B0',
+                marginBottom: '0'
+              }}>
+                Every residence features state-of-the-art smart appliances, energy-efficient systems, and eco-conscious amenities.
+              </p>
+            </div>
+          </div>
+
+          {/* Right - 3 Column Grid (Wider - 75%) */}
+          <div className="lg:col-span-6" style={{
+            backgroundColor: '#1a1a1a',
+            padding: '80px 56px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <div style={{ maxWidth: '1100px', width: '100%' }}>
+              <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '48px' }}>
+                {/* Energy Efficiency */}
+                <div>
+                  <h3 style={{
+                    fontSize: '14px',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    marginBottom: '24px',
+                    color: '#E5E4E2'
+                  }}>
+                    Energy Efficiency
+                  </h3>
+                  <ul style={{
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontSize: '13px',
+                    lineHeight: '1.8',
+                    color: '#9CA3AF',
+                    listStyle: 'none',
+                    padding: 0
+                  }}>
+                    <li style={{ marginBottom: '10px' }}>• LED recessed lighting throughout</li>
+                    <li style={{ marginBottom: '10px' }}>• Energy Star certified appliances</li>
+                    <li style={{ marginBottom: '10px' }}>• Programmable thermostats</li>
+                    <li style={{ marginBottom: '10px' }}>• High-efficiency windows</li>
+                  </ul>
+                </div>
+
+                {/* Smart Appliances & Security */}
+                <div>
+                  <h3 style={{
+                    fontSize: '14px',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    marginBottom: '24px',
+                    color: '#E5E4E2'
+                  }}>
+                    Smart Appliances & Security
+                  </h3>
+                  <ul style={{
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontSize: '13px',
+                    lineHeight: '1.8',
+                    color: '#9CA3AF',
+                    listStyle: 'none',
+                    padding: 0
+                  }}>
+                    <li style={{ marginBottom: '10px' }}>• Premium white tempered glass appliances</li>
+                    <li style={{ marginBottom: '10px' }}>• Smart gas range with convection oven</li>
+                    <li style={{ marginBottom: '10px' }}>• Smart programmable appliances</li>
+                    <li style={{ marginBottom: '10px' }}>• Keypad entry system</li>
+                    <li style={{ marginBottom: '10px' }}>• Smart washer and dryer</li>
+                    <li style={{ marginBottom: '10px' }}>• ADT security system</li>
+                    <li style={{ marginBottom: '10px' }}>• 24/7 security monitoring</li>
+                  </ul>
+                </div>
+
+                {/* Healthy & Sustainable Living */}
+                <div>
+                  <h3 style={{
+                    fontSize: '14px',
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    marginBottom: '24px',
+                    color: '#E5E4E2'
+                  }}>
+                    Healthy & Sustainable Living
+                  </h3>
+                  <ul style={{
+                    fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+                    fontSize: '13px',
+                    lineHeight: '1.8',
+                    color: '#9CA3AF',
+                    listStyle: 'none',
+                    padding: 0
+                  }}>
+                    <li style={{ marginBottom: '10px' }}>• Premium cookware (stainless steel & cast iron)</li>
+                    <li style={{ marginBottom: '10px' }}>• Glassware for storage</li>
+                    <li style={{ marginBottom: '10px' }}>• No plastic containers</li>
+                    <li style={{ marginBottom: '10px' }}>• Comprehensive recycling program</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Intelligent Living Introduction */}
+      <section style={{
+        backgroundColor: '#ECEAE6',
+        padding: '100px 0'
+      }}>
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 20px',
+          textAlign: 'center'
+        }}>
+          <h2 style={{
+            fontSize: '32px',
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontWeight: 300,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '32px',
+            color: 'var(--color-text)',
+            lineHeight: '1.5'
+          }}>
+            INTELLIGENT LIVING MEETS<br />SUSTAINABLE LUXURY
+          </h2>
+          <div style={{
+            width: '80px',
+            height: '1px',
+            backgroundColor: 'var(--color-text)',
+            margin: '0 auto 32px auto'
+          }}></div>
+          <div style={{
+            fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
+            fontSize: '15px',
+            lineHeight: '1.8',
+            color: 'var(--color-text-light)',
+            textAlign: 'center'
+          }}>
+            <p style={{ marginBottom: '0' }}>
+              At Timeless Brookfields, we've reimagined executive housing through the thoughtful integration of smart home technology and environmentally conscious design. Each residence embodies a commitment to sustainable luxury—where cutting-edge automation and energy efficiency combine to create a living environment that's as responsible as it is refined. Beyond technology, our dedication to healthy, sustainable living extends to every detail of daily life. We've eliminated single-use plastics in favor of premium, durable materials—providing cookware and storage solutions designed to last. This is executive housing designed for those who refuse to choose between sophisticated comfort and conscientious living.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Available Executive Residences Section - Matching HomePage */}
+      <section id="available-residences" style={{
         position: 'relative',
         backgroundColor: '#F5F5F5',
         boxShadow: '0 30px 80px rgba(0, 0, 0, 0.35), 0 15px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5)'
@@ -205,16 +435,16 @@ const PropertiesPage = () => {
 
         {/* Top 2 Units - Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          {/* Unit 2A */}
+          {/* Unit 1 */}
           <Link
-            to="/properties/unit-2a"
+            to="/properties/unit-1"
             className="relative group"
             style={{ overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block' }}
           >
             <div style={{ aspectRatio: '2/1', overflow: 'hidden', position: 'relative' }}>
               <img
                 src={unit1Image}
-                alt="Two-Bedroom Executive Suite - Unit 2A"
+                alt="Two-Bedroom Executive Suite - Unit 1"
                 className="w-full h-full object-cover property-image-zoom"
               />
               <div style={{
@@ -274,16 +504,16 @@ const PropertiesPage = () => {
             </div>
           </Link>
 
-          {/* Unit 1 */}
+          {/* Unit 2A */}
           <Link
-            to="/properties/unit-1"
+            to="/properties/unit-2a"
             className="relative group"
             style={{ overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block' }}
           >
             <div style={{ aspectRatio: '2/1', overflow: 'hidden', position: 'relative' }}>
               <img
                 src={unit2Image}
-                alt="Two-Bedroom Executive Suite - Unit 1"
+                alt="Two-Bedroom Executive Suite - Unit 2A"
                 className="w-full h-full object-cover property-image-zoom"
               />
               <div style={{

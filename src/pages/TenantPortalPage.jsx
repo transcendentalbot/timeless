@@ -121,7 +121,7 @@ const TenantPortalPage = () => {
               color: 'var(--color-text)',
               textAlign: 'center'
             }}>
-              Current Clients
+              Client Login
             </h2>
 
             <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -259,7 +259,7 @@ const TenantPortalPage = () => {
               marginBottom: '16px',
               color: '#FFFFFF'
             }}>
-              Your Portal Will Include
+              Your Portal Includes
             </h2>
             <div style={{
               width: '80px',

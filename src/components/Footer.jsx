@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <>
       {/* CTA Section - S&P Style */}
-      <section className="py-section group" style={{ backgroundColor: '#FFFFFF', cursor: 'pointer' }}>
+      <section className="group" style={{ backgroundColor: '#FFFFFF', cursor: 'pointer', padding: '60px 0' }}>
         <div className="container text-center">
           <h2 className="property-title-dark" style={{
             fontSize: '32px',

@@ -23,14 +23,23 @@ import gallery27 from '../assets/images/gallery/27.png';
 const AboutPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const carouselImages = [
@@ -55,10 +64,10 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       {/* Hero Section with Background Image - S&P Style */}
-      <section className="relative" style={{ overflow: 'hidden', padding: '40px 0', backgroundColor: '#f5f5f5' }}>
-        <div className="relative" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '1000px' }}>
-          {/* Left image - rotated slightly left */}
-          <div style={{
+      <section className="relative" style={{ overflow: 'hidden', padding: '20px 0', backgroundColor: '#f5f5f5' }}>
+        <div className="relative" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '600px', minHeight: '400px' }}>
+          {/* Left image - rotated slightly left - HIDDEN ON MOBILE */}
+          <div className="hidden lg:block" style={{
             position: 'absolute',
             left: '3%',
             top: '-5%',
@@ -80,30 +89,33 @@ const AboutPage = () => {
             />
           </div>
 
-          {/* Center image - main focal point */}
+          {/* Center image - main focal point - RESPONSIVE */}
           <div style={{
             position: 'absolute',
             zIndex: 2,
             transform: `scale(1.05) translateY(${scrollY * 0.08}px)`,
             boxShadow: '0 25px 70px rgba(0,0,0,0.4)',
             backgroundColor: '#ffffff',
-            border: '12px solid #ffffff',
-            transition: 'transform 0.1s ease-out'
+            border: windowWidth < 768 ? '6px solid #ffffff' : '12px solid #ffffff',
+            transition: 'transform 0.1s ease-out',
+            width: windowWidth < 768 ? '90%' : 'auto',
+            maxWidth: windowWidth < 768 ? '400px' : '800px'
           }}>
             <img
               src={heroImage}
               alt="Timeless Brookfields"
               style={{
-                width: '800px',
-                height: '900px',
+                width: '100%',
+                height: windowWidth < 768 ? 'auto' : '900px',
+                maxHeight: windowWidth < 768 ? '500px' : '900px',
                 objectFit: 'contain',
                 display: 'block'
               }}
             />
           </div>
 
-          {/* Right image - rotated slightly right */}
-          <div style={{
+          {/* Right image - rotated slightly right - HIDDEN ON MOBILE */}
+          <div className="hidden lg:block" style={{
             position: 'absolute',
             right: '3%',
             top: '5%',
@@ -125,8 +137,8 @@ const AboutPage = () => {
             />
           </div>
 
-          {/* Bottom Left image - rotated slightly left */}
-          <div style={{
+          {/* Bottom Left image - rotated slightly left - HIDDEN ON MOBILE */}
+          <div className="hidden lg:block" style={{
             position: 'absolute',
             left: '15%',
             bottom: '3%',
@@ -148,8 +160,8 @@ const AboutPage = () => {
             />
           </div>
 
-          {/* Bottom Right image - rotated slightly right */}
-          <div style={{
+          {/* Bottom Right image - rotated slightly right - HIDDEN ON MOBILE */}
+          <div className="hidden lg:block" style={{
             position: 'absolute',
             right: '15%',
             bottom: '3%',
@@ -170,18 +182,18 @@ const AboutPage = () => {
               }}
             />
           </div>
-          <div className="absolute inset-0 flex items-center justify-center text-center" style={{ zIndex: 10 }}>
+          <div className="absolute inset-0 flex items-center justify-center text-center px-4" style={{ zIndex: 10 }}>
             <div style={{
               backgroundColor: 'rgba(0, 0, 0, 0.4)',
-              padding: '20px 60px',
+              padding: windowWidth < 768 ? '15px 20px' : '20px 60px',
               backdropFilter: 'blur(4px)'
             }}>
               <h1 style={{
-                fontSize: '40px',
+                fontSize: windowWidth < 768 ? '20px' : windowWidth < 1024 ? '28px' : '40px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 300,
                 color: '#FFFFFF',
-                letterSpacing: '0.2em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
                 textTransform: 'uppercase',
                 lineHeight: '1.4',
                 marginBottom: 0
@@ -194,14 +206,14 @@ const AboutPage = () => {
       </section>
 
       {/* Our Approach Section - S&P Style */}
-      <section style={{ backgroundColor: 'var(--color-off-white)', padding: '80px 0' }}>
+      <section style={{ backgroundColor: 'var(--color-off-white)', padding: windowWidth < 768 ? '40px 20px' : '80px 0' }}>
         <div className="container text-center">
           <h2 style={{
-            fontSize: '28px',
+            fontSize: windowWidth < 768 ? '20px' : '28px',
             fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
             fontWeight: 300,
             color: 'var(--color-text)',
-            letterSpacing: '0.2em',
+            letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
             textTransform: 'uppercase',
             marginBottom: '16px'
           }}>
@@ -216,7 +228,7 @@ const AboutPage = () => {
 
           {/* Numbered Grid - 3x2 Layout */}
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-32 gap-y-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 md:gap-x-32 gap-y-12 md:gap-y-20">
             <div className="text-center flex flex-col items-center justify-center">
               <div style={{
                 fontSize: '13px',
@@ -226,10 +238,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>01</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -247,10 +259,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>02</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -268,10 +280,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>03</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -289,10 +301,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>04</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -310,10 +322,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>05</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -331,10 +343,10 @@ const AboutPage = () => {
                 color: '#999999'
               }}>06</div>
               <h3 style={{
-                fontSize: '18px',
+                fontSize: windowWidth < 768 ? '14px' : '18px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '0',
                 color: 'var(--color-text)',
@@ -352,14 +364,14 @@ const AboutPage = () => {
       <section style={{ backgroundColor: '#2d2d2d' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left - Text */}
-          <div className="flex items-center justify-center p-16 lg:p-24">
+          <div className="flex items-center justify-center p-8 md:p-16 lg:p-24">
             <div style={{ maxWidth: '500px' }}>
               <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>01</div>
               <h2 style={{
-                fontSize: '24px',
+                fontSize: windowWidth < 768 ? '18px' : '24px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 300,
-                letterSpacing: '0.2em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
                 textTransform: 'uppercase',
                 marginBottom: '32px',
                 color: '#FFFFFF'
@@ -374,7 +386,7 @@ const AboutPage = () => {
               }}></div>
               <p style={{
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-                fontSize: '15px',
+                fontSize: windowWidth < 768 ? '14px' : '15px',
                 lineHeight: '1.8',
                 color: '#CCCCCC',
                 marginBottom: '0'
@@ -396,14 +408,14 @@ const AboutPage = () => {
       </section>
 
       {/* Quote Section After Section 01 */}
-      <section className="bg-white" style={{ padding: '80px 0' }}>
+      <section className="bg-white px-4" style={{ padding: windowWidth < 768 ? '40px 20px' : '80px 0' }}>
         <div className="container text-center">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <h2 style={{
-              fontSize: '32px',
+              fontSize: windowWidth < 768 ? '20px' : windowWidth < 1024 ? '24px' : '32px',
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontWeight: 300,
-              letterSpacing: '0.15em',
+              letterSpacing: windowWidth < 768 ? '0.08em' : '0.15em',
               textTransform: 'uppercase',
               marginBottom: '32px',
               color: 'var(--color-text)',
@@ -413,7 +425,7 @@ const AboutPage = () => {
             </h2>
             <p style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '15px',
+              fontSize: windowWidth < 768 ? '14px' : '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
               marginBottom: '0'
@@ -425,15 +437,15 @@ const AboutPage = () => {
       </section>
 
       {/* Section 02 Description - Center Aligned */}
-      <section className="py-section" style={{ backgroundColor: '#ECEAE6' }}>
+      <section className="py-section px-4" style={{ backgroundColor: '#ECEAE6', padding: windowWidth < 768 ? '40px 20px' : undefined }}>
         <div className="container text-center">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>02</div>
             <h2 style={{
-              fontSize: '24px',
+              fontSize: windowWidth < 768 ? '18px' : '24px',
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontWeight: 300,
-              letterSpacing: '0.2em',
+              letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
               textTransform: 'uppercase',
               marginBottom: '32px',
               color: 'var(--color-text)'
@@ -448,7 +460,7 @@ const AboutPage = () => {
             }}></div>
             <p style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '15px',
+              fontSize: windowWidth < 768 ? '14px' : '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
               textAlign: 'center'
@@ -469,17 +481,17 @@ const AboutPage = () => {
       </section>
 
       {/* Section 03 - Modern Luxury - Two Column Layout */}
-      <section className="py-section bg-white">
+      <section className="py-section bg-white px-4" style={{ padding: windowWidth < 768 ? '40px 20px' : undefined }}>
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start max-w-6xl mx-auto">
             {/* Left - Number and Title */}
             <div>
               <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>03</div>
               <h2 style={{
-                fontSize: '24px',
+                fontSize: windowWidth < 768 ? '18px' : '24px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 300,
-                letterSpacing: '0.2em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
                 textTransform: 'uppercase',
                 marginBottom: '32px',
                 color: 'var(--color-text)',
@@ -498,7 +510,7 @@ const AboutPage = () => {
             <div>
               <p style={{
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-                fontSize: '15px',
+                fontSize: windowWidth < 768 ? '14px' : '15px',
                 lineHeight: '1.8',
                 color: 'var(--color-text-light)',
                 marginBottom: '0'
@@ -574,15 +586,15 @@ const AboutPage = () => {
       </section>
 
       {/* Section 04 - Prime Location - Off-White Background */}
-      <section style={{ backgroundColor: '#ECEAE6', padding: '100px 0' }}>
+      <section className="px-4" style={{ backgroundColor: '#ECEAE6', padding: windowWidth < 768 ? '40px 20px' : '100px 0' }}>
         <div className="container text-center">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>04</div>
             <h2 style={{
-              fontSize: '24px',
+              fontSize: windowWidth < 768 ? '18px' : '24px',
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontWeight: 300,
-              letterSpacing: '0.2em',
+              letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
               textTransform: 'uppercase',
               marginBottom: '32px',
               color: 'var(--color-text)'
@@ -597,7 +609,7 @@ const AboutPage = () => {
             }}></div>
             <p style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '15px',
+              fontSize: windowWidth < 768 ? '14px' : '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
               textAlign: 'center'
@@ -612,14 +624,14 @@ const AboutPage = () => {
       <section style={{ backgroundColor: '#2d2d2d' }}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left - Text */}
-          <div className="flex items-center justify-center p-16 lg:p-24">
+          <div className="flex items-center justify-center p-8 md:p-16 lg:p-24">
             <div style={{ maxWidth: '500px' }}>
               <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>05</div>
               <h2 style={{
-                fontSize: '24px',
+                fontSize: windowWidth < 768 ? '18px' : '24px',
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
                 fontWeight: 300,
-                letterSpacing: '0.2em',
+                letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
                 textTransform: 'uppercase',
                 marginBottom: '32px',
                 color: '#FFFFFF'
@@ -634,7 +646,7 @@ const AboutPage = () => {
               }}></div>
               <p style={{
                 fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-                fontSize: '15px',
+                fontSize: windowWidth < 768 ? '14px' : '15px',
                 lineHeight: '1.8',
                 color: '#CCCCCC',
                 marginBottom: '0'
@@ -662,15 +674,15 @@ const AboutPage = () => {
       </section>
 
       {/* Section 06 - White Glove Service - Light Background */}
-      <section style={{ backgroundColor: '#ECEAE6', padding: '100px 0' }}>
+      <section className="px-4" style={{ backgroundColor: '#ECEAE6', padding: windowWidth < 768 ? '40px 20px' : '100px 0' }}>
         <div className="container text-center">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ fontSize: '12px', letterSpacing: '0.1em', marginBottom: '24px', color: '#999999' }}>06</div>
             <h2 style={{
-              fontSize: '24px',
+              fontSize: windowWidth < 768 ? '18px' : '24px',
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontWeight: 300,
-              letterSpacing: '0.2em',
+              letterSpacing: windowWidth < 768 ? '0.1em' : '0.2em',
               textTransform: 'uppercase',
               marginBottom: '32px',
               color: 'var(--color-text)'
@@ -685,7 +697,7 @@ const AboutPage = () => {
             }}></div>
             <p style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '15px',
+              fontSize: windowWidth < 768 ? '14px' : '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
               textAlign: 'center'
@@ -697,14 +709,14 @@ const AboutPage = () => {
       </section>
 
       {/* Quote Section - S&P Style */}
-      <section className="bg-white" style={{ padding: '80px 0' }}>
+      <section className="bg-white px-4" style={{ padding: windowWidth < 768 ? '40px 20px' : '80px 0' }}>
         <div className="container text-center">
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <h2 style={{
-              fontSize: '32px',
+              fontSize: windowWidth < 768 ? '20px' : windowWidth < 1024 ? '24px' : '32px',
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
               fontWeight: 300,
-              letterSpacing: '0.15em',
+              letterSpacing: windowWidth < 768 ? '0.08em' : '0.15em',
               textTransform: 'uppercase',
               marginBottom: '32px',
               color: 'var(--color-text)',
@@ -714,7 +726,7 @@ const AboutPage = () => {
             </h2>
             <p style={{
               fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif',
-              fontSize: '15px',
+              fontSize: windowWidth < 768 ? '14px' : '15px',
               lineHeight: '1.8',
               color: 'var(--color-text-light)',
               marginBottom: '0'
